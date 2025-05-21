@@ -20,7 +20,7 @@ cron.schedule("0 0 * * *", updateQuote);
 await updateQuote();
 
 app.get("/", async (req, res) => {
-	res.send(formatQuote(randomQuote));
+	res.send(formatQuote(currentQuote));
 });
 
 app.listen(port, () => {
