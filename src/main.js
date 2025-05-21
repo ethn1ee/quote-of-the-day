@@ -10,9 +10,10 @@ const { collection } = await connect("quotes");
 let currentQuote;
 
 async function updateQuote() {
-	currentQuote = await collection
+	const quote = await collection
 		.aggregate([{ $sample: { size: 1 } }])
 		.toArray();
+	currentQuote = quote[0];
 }
 
 cron.schedule("0 0 * * *", updateQuote);
