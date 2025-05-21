@@ -1,12 +1,10 @@
 import fs from "fs";
 import { connect } from "./connect";
 
-async function run() {
-	const { client, collection } = await connect();
+async function reinsertQuotes(data) {
+	const { client, collection } = await connect("quotes");
 
 	try {
-		const data = JSON.parse(fs.readFileSync("./data/quotes.json", "utf8"));
-
 		const deleted = await collection.deleteMany({});
 		console.log(`${deleted.deletedCount} documents were deleted.`);
 
@@ -17,4 +15,4 @@ async function run() {
 	}
 }
 
-run().catch(console.dir);
+reinsertQuotes().catch(console.dir);

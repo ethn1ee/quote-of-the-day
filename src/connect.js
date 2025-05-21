@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export async function connect() {
+export async function connect(collectionName) {
 	let client;
 	let database;
 	let collection;
@@ -17,7 +17,7 @@ export async function connect() {
 		});
 
 		database = client.db("quote-of-the-day");
-		collection = database.collection("quotes");
+		collection = database.collection(collectionName);
 	} catch (err) {
 		throw new Error(err);
 	}
