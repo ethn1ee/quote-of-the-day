@@ -11,7 +11,10 @@ export async function connect() {
 	try {
 		const password = encodeURIComponent(process.env.PASSWORD);
 		const uri = `mongodb+srv://ethantlee:${password}@personal.opviux4.mongodb.net/?retryWrites=true&w=majority&appName=Personal`;
-		client = new MongoClient(uri, { autoSelectFamily: false });
+		client = new MongoClient(uri, {
+			autoSelectFamily: false,
+			autoSelectFamilyAttemptTimeout: 300,
+		});
 
 		database = client.db("quote-of-the-day");
 		collection = database.collection("quotes");
