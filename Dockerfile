@@ -1,6 +1,6 @@
 # Use an official Node.js runtime as a parent image
 # Using a specific LTS version is recommended, e.g., node:20-alpine
-FROM node:20-alpine AS builder
+FROM node
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -19,7 +19,7 @@ COPY . .
 RUN npm run build
 
 # --- Production Stage ---
-FROM node:20-alpine
+FROM node
 
 WORKDIR /usr/src/app
 
