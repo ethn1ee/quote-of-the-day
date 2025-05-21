@@ -5,9 +5,7 @@ async function run() {
 	const { client, collection } = await connect();
 
 	try {
-		const data: Quote[] = JSON.parse(
-			fs.readFileSync("./data/quotes.json", "utf8")
-		);
+		const data = JSON.parse(fs.readFileSync("./data/quotes.json", "utf8"));
 
 		const deleted = await collection.deleteMany({});
 		console.log(`${deleted.deletedCount} documents were deleted.`);

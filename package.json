@@ -1,11 +1,12 @@
 {
 	"type": "module",
+	"scripts": {
+		"build": "node",
+		"start": "node src/main.js"
+	},
 	"dependencies": {
 		"dotenv": "^16.5.0",
 		"express": "^5.1.0",
 		"mongodb": "6.16"
-	},
-	"devDependencies": {
-		"@types/express": "^5.0.2"
 	}
 }

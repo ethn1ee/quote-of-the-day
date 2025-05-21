@@ -8,9 +8,9 @@ const port = 3000;
 const { collection } = await connect();
 
 app.get("/", async (req, res) => {
-	const randomQuote = (await collection
+	const randomQuote = await collection
 		.aggregate([{ $sample: { size: 1 } }])
-		.toArray()) as Quote[];
+		.toArray();
 
 	res.send(formatQuote(randomQuote[0]));
 });
